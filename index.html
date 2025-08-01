@@ -1,8 +1,61 @@
-<p>Hello </p>
-<p>这是?的个人主页 </p>
-<p>很高兴你能来到这里</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Click Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #game {
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        #target {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <h1>Click the Target!</h1>
+        <p>Score: <span id="score">0</span></p>
+        <div id="target"></div>
+    </div>
 
-<ul>
-  <li> <a href="baidu.com">这是百度</a></li>
-</ul>
-  
+    <script>
+        const target = document.getElementById('target');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+
+        function moveTarget() {
+            const x = Math.floor(Math.random() * 250);
+            const y = Math.floor(Math.random() * 250);
+            target.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        target.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = score;
+            moveTarget();
+        });
+
+        moveTarget();
+    </script>
+</body>
+</html>
